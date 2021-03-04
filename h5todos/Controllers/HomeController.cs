@@ -105,6 +105,36 @@ namespace h5todos.Controllers
             return Redirect("/Home/TodosList");
         }
 
+        [HttpPut]
+        //
+        // Edit items
+        //
+        public IActionResult EditTodos(int id, string itemTitle, string itemDescription)
+        {
+            var userId = HttpContext.Session.GetInt32("userId");
+            if (userId == null)
+            {
+                return Redirect("/");
+            }
+
+            ViewBag.userId = userId;
+
+            var todosItem = _todoscontext.TodosItem.SingleOrDefault(t => t.Id == id && t.loginId == userId);
+            if (todosItem == null) return Redirect("/Home/TodosList");
+
+            _todoscontext.TodosItem.Update(new TodosItem
+            {
+                //kryptere Title og Description i databasen
+                Title = _provider.Protect(itemTitle),
+                Description = _provider.Protect(itemDescription),
+                Added = DateTime.Now,
+                loginId = (int)userId
+            });
+            _todoscontext.SaveChanges();
+
+            return Redirect("/Home/TodosList");
+        }
+
         [HttpGet]
         public IActionResult Index()
         {

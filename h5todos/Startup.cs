@@ -70,6 +70,7 @@ namespace h5todos
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }
