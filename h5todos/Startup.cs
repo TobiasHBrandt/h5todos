@@ -25,7 +25,7 @@ namespace h5todos
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // sql string
+            //sql string
             services.AddDbContext<TodosContext>(x => x.UseSqlServer(@"Data Source=DESKTOP-JBE33R4\BACON;Initial Catalog=TodosDB;Integrated Security=True"));
             
             // sæt en timer på hvor lang tid du kan være inaktiv når du er logget på
