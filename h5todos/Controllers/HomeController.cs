@@ -187,6 +187,7 @@ namespace h5todos.Controllers
                 {
                     Username = username,
                     Email = email,
+                    // den hasher password
                     Password = BC.HashPassword (password)
                 };
 
