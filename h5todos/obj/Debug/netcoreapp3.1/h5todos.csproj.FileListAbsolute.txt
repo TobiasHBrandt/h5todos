@@ -83,4 +83,4 @@ C:\Users\tobias\source\repos\h5todos\h5todos\bin\Debug\netcoreapp3.1\Microsoft.A
 C:\Users\tobias\source\repos\h5todos\h5todos\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.DataProtection.Abstractions.dll
 C:\Users\tobias\source\repos\h5todos\h5todos\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\tobias\source\repos\h5todos\h5todos\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Hosting.Abstractions.dll
-C:\Users\tobias\source\repos\h5todos\h5todos\obj\Debug\netcoreapp3.1\Razor\Views\Home\EditTodosList.cshtml.g.cs
+C:\Users\tobias\source\repos\h5todos\h5todos\obj\Debug\netcoreapp3.1\Razor\Views\Todos\EditTodosList.cshtml.g.cs

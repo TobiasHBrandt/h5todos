@@ -3,6 +3,9 @@
 *@
 @{
 }
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
 
 <div>
     <form method="post">
@@ -22,28 +25,34 @@
 
 @foreach (TodosItem todosItem in ViewBag.Todos)
 {
-    <form method="post">
+    <!--<form method="post">
         <div class="form-group">
-            <label for="itemTitle">Title</label>
-            <input type="text" class="form-control" id="itemTitle" name="itemTitle" placeholder="Titel" value="@Html.DisplayFor(m => todosItem.Title)" />
+            <label for="itemTitle">Title</label>-->
+    @*<input type="text" class="form-control" id="itemTitle" name="itemTitle" placeholder="Titel" value="@ViewBag.Todos.Title" />*@
+
+    <!--<textarea type="text" class="form-control" id="itemTitle" name="itemTitle" placeholder="Title"
+                      >
+            </textarea>
         </div>
         <div class="form-group">
             <label for="itemDescription">Beskrivelse</label>
             <textarea type="text" class="form-control" id="itemDescription" name="itemDescription" placeholder="Beskrivelse"
-                      >@Html.DisplayFor(m => todosItem.Description)
+                      >
             </textarea>
         </div>
-        
-        @ViewBag.Message
+        <button href=""></button>
 
-    </form>
-    @*<h2>
+
+
+
+    </form>-->
+    <h2>
         @Html.DisplayFor(m => todosItem.Title)
     </h2>
     <h3>
         @Html.DisplayFor(m => todosItem.Description)
-    </h3>*@
+    </h3>
 
     <a href="/Home/DeleteTodos/@todosItem.Id" onclick="return confirm('Er du sikker?')">Slet</a>
-    <a href="/Home/EditTodos/@todosItem">Edit</a>
+    <a href="/Todos/EditTodosList">Edit</a>
 }
