@@ -1,0 +1,28 @@
+﻿<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+</head>
+
+
+<div>
+    <form method="post">
+        <div class="form-group">
+            <label for="itemTitle">Title</label>
+            <input type="text" class="form-control" id="itemTitle" name="itemTitle" placeholder="Titel" value="@ViewBag.Todos.Title" />
+        </div>
+        <div class="form-group">
+            <label for="itemDescription">Beskrivelse</label>
+            <textarea type="text" class="form-control" id="itemDescription" name="itemDescription" placeholder="Beskrivelse">@ViewBag.Todos.Description
+                </textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Opret todos-tingest</button>
+        @ViewBag.Message
+
+    </form>
+</div>
+
+
+@foreach (TodosItem todosItem in ViewBag.Todos)
+{
+    
+   
+}

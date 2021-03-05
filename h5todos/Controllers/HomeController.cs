@@ -45,6 +45,7 @@ namespace h5todos.Controllers
             ViewBag.userId = userId;
 
             List<TodosItem> todos = _todoscontext.TodosItem.Where(t => t.loginId == userId).ToList();
+            ViewBag.Todos = new TodosItem { Title = "", Description = "", IsDone = false };
 
             foreach (TodosItem todo in todos)
             {
@@ -105,6 +106,38 @@ namespace h5todos.Controllers
             return Redirect("/Home/TodosList");
         }
 
+        [HttpPost]
+        //
+        // Edit items
+        //
+        public IActionResult EditTodos(int id, string itemTitle, string itemDescription)
+        {
+            var userId = HttpContext.Session.GetInt32("userId");
+            if (userId == null)
+            {
+                return Redirect("/");
+            }
+
+            ViewBag.userId = userId;
+
+            var todosItem = _todoscontext.TodosItem.SingleOrDefault(t => t.Id == id && t.loginId == userId);
+            if (todosItem == null) return Redirect("/Home/TodosList");
+
+            //_todoscontext.TodosItem.Update(new TodosItem
+            //{
+            //    //kryptere Title og Description i databasen
+            //    Title = _provider.Protect(itemTitle),
+            //    Description = _provider.Protect(itemDescription),
+            //    IsDone = isDone
+            //});
+            todosItem.Title = _provider.Protect(itemTitle);
+            todosItem.Description = _provider.Protect(itemDescription);
+            //todosItem.IsDone = isDone;
+            _todoscontext.SaveChanges();
+
+            return Redirect("/Todos/EditTodosList");
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -154,6 +187,7 @@ namespace h5todos.Controllers
                 {
                     Username = username,
                     Email = email,
+                    // den hasher password
                     Password = BC.HashPassword (password)
                 };
 
